@@ -1,4 +1,20 @@
-horoscope
+Horoscope
 =========
 
-users horoscope!
+Things you may want to cover:
+
+  Ruby version "2.1.2p95"
+
+  System dependencies
+
+  Configuration
+
+  Database creation "Sqlite3"
+
+  Database initialization
+
+  How to run the test suite
+
+  Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
