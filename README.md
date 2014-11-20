@@ -1,4 +1,4 @@
 horoscope
 =========
 
-users horoscope
+users horoscope!
