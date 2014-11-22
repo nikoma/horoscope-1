@@ -1,0 +1,27 @@
+<h1 align="center">Sign Up</h1>
+
+<%= form_for :user do |f| %>
+  <p align="center">
+    <%= f.label :Email %><br>
+    <%= f.email_field :email %>
+  </p>
+ 
+  <p align="center">
+    <%= f.label :Password %><br>
+    <%= f.password_field :pass %>
+  </p>
+  
+  <p align="center">
+    <%= f.label :Confirm_password %><br>
+    <%= f.password_field :confirm_pass %>
+  </p>
+  
+  <p align="center">
+    <%= f.label :Date_of_Birth %><br>
+    <%= f.date_field :date %>
+  </p>
+ 
+  <p align="center">
+    <%= f.submit %>
+  </p>
+<% end %>
