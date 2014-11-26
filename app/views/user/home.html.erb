@@ -1,47 +1,43 @@
 <h1 align="center">MY HOROSCOPE</h1>
 <p align="center">
-  <a href="/user/signin">Sign In</a> || <a href="/user/signup">Sign Up</a>
+<a href="/user/signin">Sign In</a> || <a href="/user/signup">Sign Up</a>
 </p>
-
 <table align="center" width="100%">
 <% @zodiacs.each do |i| %>
-  <% if i.id_zd == 1 %>
-    <tr align="center">
-  <% end %>
-  <% if i.id_zd < 5 %>
-    <td>
-      <img src="../zodiac/<%= i.id_zd.to_s %>.png" alt="<%= i.name.upcase %>"><br>
-      <h5 align="center"><%= i.name.upcase %><br>
-      <%= Date.parse(i.begin_dt).strftime("%d/%m") %> - <%= Date.parse(i.end_dt).strftime("%d/%m") %></h5>
-    </td>
-  <% end %>
-  <% if i.id_zd == 4 %>
-    </tr>
-    <tr align="center">
-  <% end %>
-
-  <% if i.id_zd>=5 && i.id_zd<9 %>
-    <td>
-      <img src="../zodiac/<%= i.id_zd.to_s %>.png" alt="<%= i.name.upcase %>"><br>
-      <h5 align="center"><%= i.name.upcase %><br>
-      <%= Date.parse(i.begin_dt).strftime("%d/%m") %> - <%= Date.parse(i.end_dt).strftime("%d/%m") %></h5>
-    </td>
-  <% end %>
-  <% if i.id_zd == 8 %>
-    </tr>
-    <tr align="center">
-  <% end %>
-
-  <% if i.id_zd>=9 %>
-    <td>
-      <img src="../zodiac/<%= i.id_zd.to_s %>.png" alt="<%= i.name.upcase %>"><br>
-      <h5 align="center"><%= i.name.upcase %><br>
-      <%= Date.parse(i.begin_dt).strftime("%d/%m") %> - <%= Date.parse(i.end_dt).strftime("%d/%m") %></h5>
-    </td>
-  <% end %>
-  <% if i.id_zd == 12 %>
-    </tr>
-  <% end %>
-  
+<% if i.id_zd == 1 %>
+<tr align="center">
+<% end %>
+<% if i.id_zd < 5 %>
+<td>
+<img src="../zodiac/<%= i.id_zd.to_s %>.png" alt="<%= i.name.upcase %>"><br>
+<h5 align="center"><%= i.name.upcase %><br>
+<%= Date.parse(i.begin_dt).strftime("%d/%m") %> - <%= Date.parse(i.end_dt).strftime("%d/%m") %></h5>
+</td>
+<% end %>
+<% if i.id_zd == 4 %>
+</tr>
+<tr align="center">
+<% end %>
+<% if i.id_zd>=5 && i.id_zd<9 %>
+<td>
+<img src="../zodiac/<%= i.id_zd.to_s %>.png" alt="<%= i.name.upcase %>"><br>
+<h5 align="center"><%= i.name.upcase %><br>
+<%= Date.parse(i.begin_dt).strftime("%d/%m") %> - <%= Date.parse(i.end_dt).strftime("%d/%m") %></h5>
+</td>
+<% end %>
+<% if i.id_zd == 8 %>
+</tr>
+<tr align="center">
+<% end %>
+<% if i.id_zd>=9 %>
+<td>
+<img src="../zodiac/<%= i.id_zd.to_s %>.png" alt="<%= i.name.upcase %>"><br>
+<h5 align="center"><%= i.name.upcase %><br>
+<%= Date.parse(i.begin_dt).strftime("%d/%m") %> - <%= Date.parse(i.end_dt).strftime("%d/%m") %></h5>
+</td>
+<% end %>
+<% if i.id_zd == 12 %>
+</tr>
+<% end %>
 <% end %>
 </table>

@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :zodiacs
+  #resources :user
   
   root 'user#home'
-  get 'user/signin'
-  get 'user/signup'
+  #get 'user/signin' #get '/user/signin' => 'user#signin', as: :signin 
+  #get 'user/signup #get '/user/signup' => 'user#signup', as: :signup'
+  match ':controller(/:action(/:id))', via: [:get, :post]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

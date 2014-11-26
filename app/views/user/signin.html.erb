@@ -1,6 +1,6 @@
 <h1 align="center">Sign In</h1>
 
-<%= form_for :user do |f| %>
+<%= form_for :user , method: :post do |f| %>
   <p align="center">
     <%= f.label :Email %><br>
     <%= f.email_field :email %>
@@ -8,7 +8,7 @@
  
   <p align="center">
     <%= f.label :Password %><br>
-    <%= f.password_field :pass %>
+    <%= f.password_field :password %>
   </p>
  
   <p align="center">
