@@ -1,6 +1,5 @@
-require 'uri'
-
 class UserController < ApplicationController
+  
   def home
     @zodiacs = Zodiac.all
   end
@@ -8,14 +7,7 @@ class UserController < ApplicationController
   def signin
     if params[:user]
       @user = User.find_by(params[:email])
-      #render plain: params[:user].inspect
-      #go = URI params[:user]
-      #if go.host.nil? && go.path
-        #session[:user] = go.path
-        #redirect_to 'home'
-      #end
     end
-
   end
   
   def signup
