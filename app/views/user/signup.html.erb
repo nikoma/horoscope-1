@@ -1,28 +1,28 @@
 <% provide(:title, 'Sign Up') %>
-<h1 align="center">Sign Up</h1>
+<div class="center  hero-unit">
+  <h1>Sign Up</h1>
+  
+  <div class="row">
+    <div class="span6 offset3">
+      <%= form_for :user do |f| %>
 
-<%= form_for :user do |f| %>
-  <p align="center">
-    <%= f.label :Email %><br>
-    <%= f.email_field :email %>
-  </p>
+        <%= f.label :email %><br>
+        <%= f.email_field :email %>
  
-  <p align="center">
-    <%= f.label :Password %><br>
-    <%= f.password_field :password %>
-  </p>
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
   
-  <p align="center">
-    <%= f.label :Confirm_password %><br>
-    <%= f.password_field :password_confirmation %>
-  </p>
+        <%= f.label :password_confirmation %><br>
+        <%= f.password_field :password_confirmation %>
   
-  <p align="center">
-    <%= f.label :Date_of_Birth %><br>
-    <%= f.date_field :dt_of_b %>
-  </p>
+        <%= f.label :Date_of_Birth %><br>
+        <%= f.date_field :dt_of_b %>
  
-  <p align="center">
-    <%= f.submit %>
-  </p>
-<% end %>
+        <%= f.submit "Create account", class: "btn btn-large btn-primary" %>
+      <% end %>
+           
+      <br>
+      <span><h6>Already a member? <%= link_to "Sign In!", signin_path %></h6></span>
+    </div>
+  </div>
+</div>

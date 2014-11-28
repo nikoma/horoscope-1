@@ -18,7 +18,7 @@
           <nav>
             <ul class="nav pull-right">
               <li><%= link_to "Home",    root_url %></li>
-              <li><%= link_to "Sign In", 'user/signin' %></li>
+              <li><%= link_to "Sign In", signin_path %></li>
             </ul>
           </nav>
         </div>
@@ -27,19 +27,23 @@
     
     <div class="container">
       <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
     </div>
     
+    <!-- navbar-fixed-bottom -->
     <footer class="footer">
-      <small>
-        <a href="https://github.com/AlexBill/horoscope">GitHub project</a>
-        from Alex Bill
-      </small>
-      <nav>
-        <ul>
-          <li><%= link_to "About",   '#' %></li>
-          <li><%= link_to "Contact", '#' %></li>
-        </ul>
-      </nav>
+      <div class="container">
+        <small>
+          <a href="https://github.com/AlexBill/horoscope">GitHub project</a>
+          from Alex Bill
+        </small>
+        <nav>
+          <ul>
+            <li><%= link_to "About",   '#' %></li>
+            <li><%= link_to "Contact", '#' %></li>
+          </ul>
+        </nav>
+      </div>
     </footer>
 
 </body>

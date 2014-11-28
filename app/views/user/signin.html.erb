@@ -1,18 +1,22 @@
 <% provide(:title, 'Sign In') %>
-<h1 align="center">Sign In</h1>
+<div class="center hero-unit">
+  <h1>Sign In</h1>
+  
+  <div class="row">
+    <div class="span6 offset3">
+      <%= form_for :user do |f| %>
 
-<%= form_for :user , method: :post do |f| %>
-  <p align="center">
-    <%= f.label :Email %><br>
-    <%= f.email_field :email %>
-  </p>
+        <%= f.label :email %><br>
+        <%= f.email_field :email %>
  
-  <p align="center">
-    <%= f.label :Password %><br>
-    <%= f.password_field :password %>
-  </p>
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
  
-  <p align="center">
-    <%= f.submit %>
-  </p>
-<% end %>
+        <%= f.submit "Sign In", class: "btn btn-large btn-primary" %>
+      <% end %>
+      
+      <br>
+      <span><h6>Want to register? <%= link_to "Sign Up!", signup_path %></h6></span>
+    </div>
+  </div>
+</div>
