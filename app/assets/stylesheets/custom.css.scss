@@ -1,5 +1,6 @@
 @import "bootstrap";
 
+/* TEXT */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -25,6 +26,8 @@ p {
   line-height: 1.7em;
 }
 
+
+/* LOGO */
 #logo {
   float: left;
   margin-right: 10px;
@@ -42,6 +45,8 @@ p {
   text-decoration: none;
 }
 
+
+/* BODY */
 html {
   overflow-y: scroll;
 }
@@ -67,9 +72,44 @@ textarea {
 }
 
 header {
-  height: 60px;
+  height: 50px;
 }
 
 .nav > li {
   float: left;
+}
+
+
+/* FOOTER */
+footer {
+  background-color: #222222;
+  border-top: 3px solid #337AB7;
+  color: #337AB7;
+  height: 43px;
+  margin-top: 45px;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+footer a {
+  color: #fff;
+}
+
+footer a:hover {
+  color: #337AB7;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 10px;
 }

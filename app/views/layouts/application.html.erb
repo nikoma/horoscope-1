@@ -28,6 +28,19 @@
     <div class="container">
       <%= yield %>
     </div>
+    
+    <footer class="footer">
+      <small>
+        <a href="https://github.com/AlexBill/horoscope">GitHub project</a>
+        from Alex Bill
+      </small>
+      <nav>
+        <ul>
+          <li><%= link_to "About",   '#' %></li>
+          <li><%= link_to "Contact", '#' %></li>
+        </ul>
+      </nav>
+    </footer>
 
 </body>
 </html>
