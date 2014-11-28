@@ -19,17 +19,25 @@ class UserController < ApplicationController
   end
   
   def signup
+    @user = User.new
     if params[:user]
-      @user = User.new(params.require(:user).permit(:email, :password, :dt_of_b))
+      @user = User.new(user_params)
  
       if @user.save
 	@zodiacs = Zodiac.all
-        redirect_to root_url #redirect_to @user
+	flash[:success] = "Welcome to the Horoscope!"
+        #redirect_to root_url 
+	redirect_to @user
       else
-	@user = User.new
         render 'signup'
       end
     end
   end
  
+  private
+
+    def user_params
+      params.require(:user).permit(:email, :password,
+                                   :password_confirmation, :dt_of_b)
+    end
 end
