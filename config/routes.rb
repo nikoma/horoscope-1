@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   root 'user#home'
   match '/signup',  to: 'user#signup',            via: [:get, :post]
   match '/signin',  to: 'user#signin',            via: [:get, :post]
+  match '/users',  to: 'user#index',            via: :get
   #get 'user/signin' 
   #get '/user/signin' => 'user#signin', as: :signin 
   #get 'user/signup'
   #get '/user/signup' => 'user#signup', as: :signup
-  match ':controller(/:action(/:id))', via: [:get, :post]
+  #match ':controller(/:action(/:id))', via: [:get, :post]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

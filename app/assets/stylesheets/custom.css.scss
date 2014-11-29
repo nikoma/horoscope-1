@@ -65,9 +65,9 @@ textarea {
 
 .center {
   text-align: center;
-  background-color: LightGray;
+  /*background-color: whitesmoke;*/
   border-radius: 25px 25px 25px 25px;
-  border: 1px solid #337AB7;
+  border: 3px solid #337AB7;
 }
 
 .center h1 {
@@ -155,10 +155,7 @@ input {
   }
 }
 
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
-}
+
 
 .field_with_errors {
   color: #f00;
