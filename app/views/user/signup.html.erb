@@ -18,18 +18,18 @@
         </div>
       <% end %>
       
-      <%= form_for :user do |f| %>
+      <%= form_for :user, method: :post do |f| %>
 
-        <%= f.label :email %><br>
+        <%= f.label "Email:" %><br>
         <%= f.email_field :email %>
  
-        <%= f.label :password %><br>
+        <%= f.label "Password:" %><br>
         <%= f.password_field :password %>
   
-        <%= f.label :password_confirmation %><br>
+        <%= f.label "Password confirmation:" %><br>
         <%= f.password_field :password_confirmation %>
   
-        <%= f.label :Date_of_Birth %><br>
+        <%= f.label "Date of birth (YYYY-MM-DD):" %><br>
         <%= f.date_field :dt_of_b %>
  
         <%= f.submit "Create account", class: "btn btn-large btn-primary" %>

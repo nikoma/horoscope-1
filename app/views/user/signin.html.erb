@@ -1,15 +1,14 @@
 <% provide(:title, 'Sign In') %>
 <div class="center hero-unit">
   <h1>Sign In</h1>
-  
   <div class="row">
     <div class="span6 offset3">
-      <%= form_for :user do |f| %>
+      <%= form_for :user, method: :post do |f| %>
 
-        <%= f.label :email %><br>
+        <%= f.label "Email:" %><br>
         <%= f.email_field :email %>
  
-        <%= f.label :password %><br>
+        <%= f.label "Password:" %><br>
         <%= f.password_field :password %>
  
         <%= f.submit "Sign In", class: "btn btn-large btn-primary" %>

@@ -1,6 +1,6 @@
 <% provide(:title, @user.email) %>
 <div class="center hero-unit">
-  <h1>Account</h1>
+  <h1>User Account</h1>
   <img src="../zodiac/<%= @user.id_zd.to_s %>.png" alt="<%= @user.email.upcase %>">
   <h3>Email: </h3><h5><%= @user.email %></h5>
   <h3>Birthday: </h3><h5><%= @user.dt_of_b %></h5>
