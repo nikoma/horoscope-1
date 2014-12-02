@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+  include UserHelper
   
   def home #main page
     @zodiacs = Zodiac.all
@@ -16,6 +17,7 @@ class UserController < ApplicationController
   def show #user account
     if signed_in?
       @user = User.find(params[:id])
+      @horoscope_text = "Oops, there is nothing..."
     else 
       flash[:error] = "Not allowed to view..."
       redirect_to root_url
@@ -54,34 +56,6 @@ class UserController < ApplicationController
   def signout #user exit
     sign_out
     redirect_to root_url  
-  end
-  
-  
-  #---------------------------------------------------
-  def sign_in(user)  #add cookies user
-    token = User.new_token
-    cookies.permanent[:token] = token #{ value: token, expires: 1.days.from_now.utc }
-    user.update_attribute(:remember_token, User.encrypt(token))
-    self.current_user = user
-  end
-  
-  def sign_out
-    current_user.update_attribute(:remember_token, User.encrypt(User.new_token))
-    cookies.delete(:token)
-    self.current_user = nil
-  end
-  
-  def signed_in?  #check user
-    !current_user.nil?
-  end
-  
-  def current_user=(user)
-    @current_user = user
-  end
-
-  def current_user  #current user
-    token = User.encrypt(cookies[:token])
-    @current_user ||= User.find_by(remember_token: token)
   end
   
   

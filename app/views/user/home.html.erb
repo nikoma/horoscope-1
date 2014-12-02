@@ -18,7 +18,7 @@
         <td>
         <img src="../zodiac/<%= i.id_zd.to_s %>.png" alt="<%= i.name.upcase %>"><br>
         <h5 align="center"><%= i.name.upcase %><br>
-        <%= Date.parse(i.begin_dt).strftime("%d/%m") %> - <%= Date.parse(i.end_dt).strftime("%d/%m") %></h5>
+        <%= Date.parse(i.begin_dt).strftime("%d %b") %> - <%= Date.parse(i.end_dt).strftime("%d %b") %></h5>
         </td>
       <% end %>
       <% if i.id_zd == 4 %>
@@ -29,7 +29,7 @@
         <td>
         <img src="../zodiac/<%= i.id_zd.to_s %>.png" alt="<%= i.name.upcase %>"><br>
         <h5 align="center"><%= i.name.upcase %><br>
-        <%= Date.parse(i.begin_dt).strftime("%d/%m") %> - <%= Date.parse(i.end_dt).strftime("%d/%m") %></h5>
+        <%= Date.parse(i.begin_dt).strftime("%d %b") %> - <%= Date.parse(i.end_dt).strftime("%d %b") %></h5>
         </td>
       <% end %>
       <% if i.id_zd == 8 %>
@@ -40,7 +40,7 @@
         <td>
         <img src="../zodiac/<%= i.id_zd.to_s %>.png" alt="<%= i.name.upcase %>"><br>
         <h5 align="center"><%= i.name.upcase %><br>
-        <%= Date.parse(i.begin_dt).strftime("%d/%m") %> - <%= Date.parse(i.end_dt).strftime("%d/%m") %></h5>
+        <%= Date.parse(i.begin_dt).strftime("%d %b") %> - <%= Date.parse(i.end_dt).strftime("%d %b") %></h5>
         </td>
       <% end %>
       <% if i.id_zd == 12 %>

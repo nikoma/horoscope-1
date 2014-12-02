@@ -2,6 +2,14 @@
 <div class="center hero-unit">
   <h1>User Account</h1>
   <img src="../zodiac/<%= @user.id_zd.to_s %>.png" alt="<%= @user.email.upcase %>">
-  <h3>Email: </h3><h5><%= @user.email %></h5>
-  <h3>Birthday: </h3><h5><%= @user.dt_of_b %></h5>
+  <h3>Email: </h3><h5><%= @user.email.upcase %></h5>
+  <h3>Birthday: </h3><h5><%= Date.parse(@user.dt_of_b).strftime("%d %B %Y") %></h5>
+  <br>
+  <h3>Horoscope for today:</h3>
+  <h2><%= @horoscope_text %></h2>
+  <br>
+  <p align="center">
+    <%= link_to "< Yesterday", '#', class: "btn btn-large btn-primary" %>
+    <%= link_to "Tomorrow >", '#', class: "btn btn-large btn-primary" %>
+  </p>
 </div>
