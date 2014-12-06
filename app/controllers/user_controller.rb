@@ -1,27 +1,19 @@
-class UserController < ApplicationController
+class UserController < ApplicationController  
   include UserHelper
-  
+  before_action :signedin_user, only: [:index, :show]
+ 
   def home #main page
     @zodiacs = Zodiac.all
   end
   
   def index #all users
-    if signed_in?
-      @user = User.all
-    else 
-      flash[:error] = "Not allowed to view..."
-      redirect_to root_url
-    end
+    #@user = User.all
+    @user = User.paginate(page: params[:page])
   end
   
   def show #user account
-    if signed_in?
-      @user = User.find(params[:id])
-      @horoscope_text = "Oops, there is nothing..."
-    else 
-      flash[:error] = "Not allowed to view..."
-      redirect_to root_url
-    end
+    @user = User.find(params[:id])
+    @horoscope_text = "Oops, there is nothing..."
   end
   
   def signin #user login
@@ -63,5 +55,12 @@ class UserController < ApplicationController
 
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :dt_of_b)
+    end
+    
+    def signedin_user
+      unless signed_in?
+        flash[:error] = "Not allowed to view... Please sign in..."
+        redirect_to signin_url
+      end
     end
 end
