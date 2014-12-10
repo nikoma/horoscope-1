@@ -1,6 +1,6 @@
 class UserController < ApplicationController  
   include UserHelper
-  before_action :signedin_user, only: [:index, :show]
+  before_action :signedin_user, only: [:index, :show, :yesterday, :tomorrow, :today]
  
   def home #main page
     @zodiacs = Zodiac.all
@@ -13,7 +13,21 @@ class UserController < ApplicationController
   
   def show #user account
     @user = User.find(params[:id])
-    @horoscope_text = "Oops, there is nothing..."
+  end
+  
+  def today #horoscope for today
+    @user = User.find(params[:id])
+    @forecast = "Oops, there is nothing..."
+  end
+  
+  def yesterday #horoscope for yesterday
+    @user = User.find(params[:id])
+    @forecast = "Oops, there is nothing..."
+  end
+  
+  def tomorrow #horoscope for tomorrow
+    @user = User.find(params[:id])
+    @forecast = "Oops, there is nothing..."
   end
   
   def signin #user login
