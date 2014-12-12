@@ -17,17 +17,42 @@ class UserController < ApplicationController
   
   def today #horoscope for today
     @user = User.find(params[:id])
-    @forecast = "Oops, there is nothing..."
+    #@forecast = Forecast.where("id_zd = ? AND dt = ?", @user.id_zd, Date.now.strftime("%Y-%m-%d"))
+    t = Time.now
+    @forecast = Forecast.where("id_zd = ? AND dt = ?", @user.id_zd, t.strftime("%Y-%m-%d"))
+    if @forecast.count != 1
+      @fulltext = "Oops, there is nothing..."
+    else
+      @forecast.each do |f|
+        @fulltext = f.text
+      end
+    end
   end
   
   def yesterday #horoscope for yesterday
     @user = User.find(params[:id])
-    @forecast = "Oops, there is nothing..."
+    t = Time.now - 1.day
+    @forecast = Forecast.where("id_zd = ? AND dt = ?", @user.id_zd, t.strftime("%Y-%m-%d"))
+    if @forecast.count != 1
+      @fulltext = "Oops, there is nothing..."
+    else
+      @forecast.each do |f|
+        @fulltext = f.text
+      end
+    end
   end
   
   def tomorrow #horoscope for tomorrow
     @user = User.find(params[:id])
-    @forecast = "Oops, there is nothing..."
+    t = Time.now + 1.day
+    @forecast = Forecast.where("id_zd = ? AND dt = ?", @user.id_zd, t.strftime("%Y-%m-%d"))
+    if @forecast.count != 1
+      @fulltext = "Oops, there is nothing..."
+    else
+      @forecast.each do |f|
+        @fulltext = f.text
+      end
+    end
   end
   
   def signin #user login
