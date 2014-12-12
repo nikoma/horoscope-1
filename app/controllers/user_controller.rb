@@ -7,7 +7,6 @@ class UserController < ApplicationController
   end
   
   def index #all users
-    #@user = User.all
     @user = User.paginate(page: params[:page])
   end
   
@@ -17,11 +16,10 @@ class UserController < ApplicationController
   
   def today #horoscope for today
     @user = User.find(params[:id])
-    #@forecast = Forecast.where("id_zd = ? AND dt = ?", @user.id_zd, Date.now.strftime("%Y-%m-%d"))
     t = Time.now
     @forecast = Forecast.where("id_zd = ? AND dt = ?", @user.id_zd, t.strftime("%Y-%m-%d"))
-    if @forecast.count != 1
-      @fulltext = "Oops, there is nothing..."
+    if @forecast.count < 1
+      parse_forecasts(@user.id_zd, 1)
     else
       @forecast.each do |f|
         @fulltext = f.text
@@ -33,8 +31,8 @@ class UserController < ApplicationController
     @user = User.find(params[:id])
     t = Time.now - 1.day
     @forecast = Forecast.where("id_zd = ? AND dt = ?", @user.id_zd, t.strftime("%Y-%m-%d"))
-    if @forecast.count != 1
-      @fulltext = "Oops, there is nothing..."
+    if @forecast.count < 1
+      parse_forecasts(@user.id_zd, 2)
     else
       @forecast.each do |f|
         @fulltext = f.text
@@ -46,8 +44,8 @@ class UserController < ApplicationController
     @user = User.find(params[:id])
     t = Time.now + 1.day
     @forecast = Forecast.where("id_zd = ? AND dt = ?", @user.id_zd, t.strftime("%Y-%m-%d"))
-    if @forecast.count != 1
-      @fulltext = "Oops, there is nothing..."
+    if @forecast.count < 1
+      parse_forecasts(@user.id_zd, 3)
     else
       @forecast.each do |f|
         @fulltext = f.text
@@ -60,8 +58,8 @@ class UserController < ApplicationController
       @user = User.find_by(email: params[:user][:email].downcase)
       if @user && @user.authenticate(params[:user][:password])
 	flash[:success] = "Welcome to the Horoscope!"
-	sign_in @user
-	redirect_to @user
+	sign_in (@user)
+	redirect_to (@user)
       else
 	flash.now[:error] = "Invalid combination..."
         render 'signin'
@@ -74,10 +72,10 @@ class UserController < ApplicationController
     if params[:user]
       @user = User.new(user_params) 
       if @user.save
-	add_zn_zd @user
-	sign_in @user
+	add_zn_zd (@user)
+	sign_in (@user)
 	flash[:success] = "Welcome to the Horoscope!"
-	redirect_to @user
+	redirect_to (@user)
       else
         render 'signup'
       end
@@ -86,7 +84,7 @@ class UserController < ApplicationController
  
   def signout #user exit
     sign_out
-    redirect_to root_url  
+    redirect_to (root_url)  
   end
   
   
@@ -99,7 +97,31 @@ class UserController < ApplicationController
     def signedin_user
       unless signed_in?
         flash[:error] = "Not allowed to view... Please sign in..."
-        redirect_to signin_url
+        redirect_to (signin_url)
+      end
+    end
+    
+    def parse_forecasts(id_zd, n)
+      @zodiacs = Zodiac.find_by(id_zd: id_zd)
+      if n == 1
+        my_url = "http://my.horoscope.com/astrology/free-daily-horoscope-#{@zodiacs.name.downcase}.html"
+	t = Time.now
+      elsif n == 2
+        my_url = "http://my.horoscope.com/astrology/yesterday-horoscope-#{@zodiacs.name.downcase}.html"
+	t = Time.now - 1.day
+      else
+        my_url = "http://my.horoscope.com/astrology/tomorrow-horoscope-#{@zodiacs.name.downcase}.html"
+	t = Time.now + 1.day
+      end
+      http_response = Net::HTTP.get_response(URI.parse(my_url))
+      my_html = http_response.body
+      my_html = my_html[my_html.index('padding-right:10px;')+35..my_html.index('linespacedot')]
+      my_html = my_html[0..my_html.index('</div>')-1] 
+      @forecast = Forecast.new(id_zd: id_zd, text: my_html, dt: t.strftime("%Y-%m-%d"))
+      if @forecast.save
+	@fulltext = my_html
+      else
+	@fulltext = "Oops, there is nothing..."
       end
     end
 end
