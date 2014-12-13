@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210205134) do
+ActiveRecord::Schema.define(version: 20141213173342) do
 
   create_table "forecasts", force: true do |t|
     t.integer  "id_zd"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20141210205134) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "forecasts", ["dt"], name: "index_forecasts_on_dt"
+  add_index "forecasts", ["id_zd"], name: "index_forecasts_on_id_zd"
 
   create_table "users", force: true do |t|
     t.integer  "id_zd"

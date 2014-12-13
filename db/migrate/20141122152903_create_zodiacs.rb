@@ -13,5 +13,3 @@ class CreateZodiacs < ActiveRecord::Migration
     add_index :zodiacs, :name
   end
 end
-
-#i = Zodiac.new(id_zd: 7, name: "libra", begin_dt: "2014-09-24", end_dt: "2014-10-23")
