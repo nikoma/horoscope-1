@@ -3,9 +3,12 @@ module UserHelper
   def add_zn_zd(user)  #add sign of the zodiac
     @zodiacs = Zodiac.all
     @zodiacs.each do |zd|
-      b_dt = Date.parse(zd.begin_dt).strftime("%d/%m/2014")
-      e_dt = Date.parse(zd.end_dt).strftime("%d/%m/2014")
-      dt_b = Date.parse(user.dt_of_b).strftime("%d/%m/2014")
+      b_dt = Date.parse(zd.begin_dt).strftime("%d/%m/0001")
+      e_dt = Date.parse(zd.end_dt).strftime("%d/%m/0001")
+      if zd.id_zd == 10
+        e_dt = Date.parse(zd.end_dt).strftime("%d/%m/0002")
+      end
+      dt_b = Date.parse(user.dt_of_b).strftime("%d/%m/0001")
       if (dt_b.to_date >= b_dt.to_date) && (dt_b.to_date <= e_dt.to_date)
 	user.update_attribute(:id_zd, zd.id_zd)
       end
