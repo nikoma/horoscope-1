@@ -1,7 +1,7 @@
 <% provide(:title, @user.email) %>
 <div class="center hero-unit">
   <h1>Horoscope for Yesterday:</h1>
-  <h2><%= @fulltext %></h2>
+  <div class="fulltext"><h2><%= @fulltext %></h2></div>
   <br>
   <%= render 'layouts/view_horoscope_btn' %>
 </div>

@@ -19,6 +19,7 @@ class UserController < ApplicationController
     t = Time.now
     @forecast = Forecast.where("id_zd = ? AND dt = ?", @user.id_zd, t.strftime("%Y-%m-%d"))
     if @forecast.count < 1
+      @fulltext = "Oops, there is nothing..."
       parse_forecasts(@user.id_zd, 1)
     else
       @forecast.each do |f|
