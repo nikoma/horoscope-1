@@ -10,3 +10,5 @@ Used:
 * Bootstrap version "3.3.1.0"
   
 * Database creation "SQLite3"
+
+Demo: http://myhoroscope.herokuapp.com/
