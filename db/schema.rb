@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213173342) do
+ActiveRecord::Schema.define(version: 20141214125923) do
 
   create_table "forecasts", force: true do |t|
     t.integer  "id_zd"
     t.string   "dt"
-    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "text"
   end
 
   add_index "forecasts", ["dt"], name: "index_forecasts_on_dt"
