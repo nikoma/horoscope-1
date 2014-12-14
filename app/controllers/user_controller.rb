@@ -118,7 +118,7 @@ class UserController < ApplicationController
       my_html = http_response.body
       my_html = my_html[my_html.index('padding-right:10px;')+35..my_html.index('linespacedot')]
       my_html = my_html[0..my_html.index('</div>')-1] 
-      @forecast = Forecast.new(id_zd: id_zd, text: my_html, dt: t.strftime("%Y-%m-%d"))
+      @forecast = Forecast.new(id_zd: id_zd, text: "#{my_html}", dt: "#{t.strftime("%Y-%m-%d")}")
       if @forecast.save
 	@fulltext = my_html
       else
