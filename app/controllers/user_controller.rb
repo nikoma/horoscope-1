@@ -1,6 +1,4 @@
 class UserController < ApplicationController  
-  require 'net/http'
-  require 'uri'
   include UserHelper
   before_action :signedin_user, only: [:index, :show, :yesterday, :tomorrow, :today]
  
