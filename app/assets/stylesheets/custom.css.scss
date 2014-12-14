@@ -88,6 +88,9 @@ header {
   padding-right: 20px;
 }
 
+.container {
+  margin-bottom: 40px;
+}
 
 /* FOOTER */
 footer {
@@ -99,6 +102,11 @@ footer {
   padding-top: 4px;
   padding-left: 15px;
   padding-right: 15px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
 }
 
 footer a {
