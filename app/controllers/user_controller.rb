@@ -59,7 +59,11 @@ class UserController < ApplicationController
       @user = User.find_by(email: params[:user][:email].downcase)
       if @user && @user.authenticate(params[:user][:password])
 	flash[:success] = "Welcome to the Horoscope!"
-	sign_in (@user)
+	if params[:remember_me]
+          sign_in(@user, 1)
+        else
+          sign_in(@user, 0)
+        end   
 	redirect_to (@user)
       else
 	flash.now[:error] = "Invalid combination..."
