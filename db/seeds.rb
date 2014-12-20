@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Zodiac.create(id_zd: 1, name: "aries", begin_dt: "03-21", end_dt: "04-20")
+Zodiac.create(id_zd: 2, name: "taurus", begin_dt: "04-21", end_dt: "05-20")
+Zodiac.create(id_zd: 3, name: "gemini", begin_dt: "05-21", end_dt: "06-21")
+Zodiac.create(id_zd: 4, name: "cancer", begin_dt: "06-22", end_dt: "07-22") 
+Zodiac.create(id_zd: 5, name: "leo", begin_dt: "07-23", end_dt: "08-23")
+Zodiac.create(id_zd: 6, name: "virgo", begin_dt: "08-24", end_dt: "09-23")
+Zodiac.create(id_zd: 7, name: "libra", begin_dt: "09-24", end_dt: "10-23")
+Zodiac.create(id_zd: 8, name: "scorpio", begin_dt: "10-24", end_dt: "11-22")
+Zodiac.create(id_zd: 9, name: "sagittarius", begin_dt: "11-23", end_dt: "12-21")
+Zodiac.create(id_zd: 10, name: "capricorn", begin_dt: "12-22", end_dt: "01-20")
+Zodiac.create(id_zd: 11, name: "aquarius", begin_dt: "01-21", end_dt: "02-20")
+Zodiac.create(id_zd: 12, name: "pisces", begin_dt: "02-21", end_dt: "03-20")
