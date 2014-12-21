@@ -14,14 +14,15 @@ end
 
 private
 
-  def valid_dt_of_b?
-    if dt_of_b.present?
-      unless dt_of_b.to_date.is_a?(Date)
-        errors.add(:dt_of_b, "is an invalid date")
-      end
-      
+  def valid_dt_of_b?   
+    begin 
+      dt = dt_of_b.to_date 
+    rescue 
+      errors.add(:dt_of_b, "is an invalid date")
+    end
+    if dt.present?
       dt_now = Time.now.strftime("%Y-%m-%d")
-      unless dt_of_b.to_date <= dt_now.to_date
+      unless dt <= dt_now.to_date
         errors.add(:dt_of_b, "is an invalid date > Now")
       end
     end
