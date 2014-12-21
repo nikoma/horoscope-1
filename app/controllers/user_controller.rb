@@ -78,7 +78,7 @@ class UserController < ApplicationController
       @user = User.new(user_params) 
       if @user.save
 	add_zn_zd (@user)
-	sign_in (@user)
+	sign_in(@user, 0)
 	flash[:success] = "Welcome to the Horoscope!"
 	redirect_to (@user)
       else

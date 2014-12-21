@@ -8,7 +8,7 @@ module UserHelper
       if zd.id_zd == 10
         e_dt = Date.parse('0000-'+zd.end_dt).strftime("%d/%m/0002")
       end
-      dt_b = Date.parse('0000-'+user.dt_of_b).strftime("%d/%m/0001")
+      dt_b = Date.parse(user.dt_of_b).strftime("%d/%m/0001")
       if (dt_b.to_date >= b_dt.to_date) && (dt_b.to_date <= e_dt.to_date)
 	user.update_attribute(:id_zd, zd.id_zd)
       end
@@ -26,6 +26,7 @@ module UserHelper
   
   def sign_out
     cookies.delete(:token)
+    reset_session
     self.current_user = nil
   end
   
