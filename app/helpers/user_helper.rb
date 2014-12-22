@@ -3,13 +3,16 @@ module UserHelper
   def add_zn_zd(user)  #add sign of the zodiac
     @zodiacs = Zodiac.all
     @zodiacs.each do |zd|
-      b_dt = Date.parse('0000-'+zd.begin_dt).strftime("%d/%m/0001")
-      e_dt = Date.parse('0000-'+zd.end_dt).strftime("%d/%m/0001")
+      b_dt = Date.strptime(zd.begin_dt, "%m-%d")
+      e_dt = Date.strptime(zd.end_dt, "%m-%d")
+      dt_b = Date.strptime(Date.parse(user.dt_of_b).strftime("%m-%d"), "%m-%d")
       if zd.id_zd == 10
-        e_dt = Date.parse('0000-'+zd.end_dt).strftime("%d/%m/0002")
+        e_dt = e_dt + 1.year
+	if dt_b >= Date.strptime('01-01', "%m-%d") && dt_b <= Date.strptime(zd.end_dt, "%m-%d")
+	  dt_b = dt_b + 1.year
+	end
       end
-      dt_b = Date.parse(user.dt_of_b).strftime("%d/%m/0001")
-      if (dt_b.to_date >= b_dt.to_date) && (dt_b.to_date <= e_dt.to_date)
+      if (dt_b >= b_dt) && (dt_b <= e_dt)
 	user.update_attribute(:id_zd, zd.id_zd)
       end
     end
