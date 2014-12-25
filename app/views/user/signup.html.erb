@@ -19,7 +19,7 @@
         <%= f.password_field :password_confirmation %>
   
         <%= f.label "Date of birth(YYYY-MM-DD):" %><br>
-        <%= f.date_field :dt_of_b, placeholder: "YYYY-MM-DD" %>
+        <%= f.date_field :dt_of_b, placeholder: "YYYY-MM-DD", value: @user.dt_of_b %>
 
         <%= f.submit "Create account", class: "btn btn-large btn-primary" %>
       <% end %>
