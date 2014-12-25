@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :user, only: [:home, :signup, :signin, :signout, :index, :show]
+  resources :user, only: [:home, :signup, :signin, :signout, :index, :show, :edit, :update]
   
   root 'user#home'
   match '/signup',  to: 'user#signup',  via: [:get, :post]
@@ -10,9 +10,5 @@ Rails.application.routes.draw do
   get '/user/:id/tomorrow' => 'user#tomorrow', as: :tomorrow
   get '/user/:id/yesterday' => 'user#yesterday', as: :yesterday
   
-  #get 'user/signin' 
-  #get '/user/signin' => 'user#signin', as: :signin 
-  #get 'user/signup'
-  #get '/user/signup' => 'user#signup', as: :signup
   #match ':controller(/:action(/:id))', via: [:get, :post]
 end

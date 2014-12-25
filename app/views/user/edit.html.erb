@@ -1,13 +1,13 @@
-<% provide(:title, 'Sign Up') %>
+<% provide(:title, 'Edit My Account') %>
 <div class="center  hero-unit">
-  <h1>Sign Up</h1>
+  <h1>Edit My Account</h1>
   
   <div class="row">
     <div class="span6 offset3">
     
       <%= render 'layouts/view_errors' %>
       
-      <%= form_for :user, method: :post do |f| %>
+      <%= form_for(@user) do |f| %>
 
         <%= f.label "Email:" %><br>
         <%= f.email_field :email %>
@@ -21,11 +21,9 @@
         <%= f.label "Date of birth(YYYY-MM-DD):" %><br>
         <%= f.date_field :dt_of_b, placeholder: "YYYY-MM-DD" %>
 
-        <%= f.submit "Create account", class: "btn btn-large btn-primary" %>
+        <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+        
       <% end %>
-           
-      <br>
-      <span><h6>Already a member? <%= link_to "Sign In!", signin_path %></h6></span>
     </div>
   </div>
 </div>

@@ -1,7 +1,8 @@
 class UserController < ApplicationController  
   include UserHelper
-  before_action :signedin_user, only: [:index, :show, :yesterday, :tomorrow, :today]
- 
+  before_action :signedin_user, only: [:index, :show, :edit, :update, :yesterday, :tomorrow, :today]
+  before_action :my_account,   only: [:edit, :update]
+  
   def home #main page
     @zodiacs = Zodiac.all
   end
@@ -12,6 +13,21 @@ class UserController < ApplicationController
   
   def show #user account
     @user = User.find(params[:id])
+  end
+  
+  def edit #edit user account
+    @user = User.find(params[:id])
+  end
+  
+  def update #update user account
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      add_zn_zd (@user)
+      flash[:success] = "My Profile Updated"
+      redirect_to (@user)  
+    else
+      render 'edit'
+    end
   end
   
   def today #horoscope for today
@@ -104,6 +120,11 @@ class UserController < ApplicationController
         flash[:error] = "Not allowed to view... Please sign in..."
         redirect_to (signin_url)
       end
+    end
+    
+    def my_account
+      @user = User.find(params[:id])
+      redirect_to (edit_user_path(current_user)) unless @user == current_user
     end
     
     def parse_forecasts(id_zd, n)

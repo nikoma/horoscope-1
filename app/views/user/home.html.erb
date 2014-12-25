@@ -10,10 +10,10 @@
   <% end %>
   <br>
   <table align="center" width="100%">
-    <% @zodiacs.each do |i| %>      
+    <% @zodiacs.each do |i| %>
       <% if i.id_zd == 1 || i.id_zd == 5 || i.id_zd == 9 %>
         <tr align="center">
-      <% end %>        
+      <% end %>
       <td>
       <img src="../zodiac/<%= i.id_zd.to_s %>.png" alt="<%= i.name.upcase %>"><br>
       <h5 align="center"><%= i.name.upcase %><br>
@@ -21,7 +21,7 @@
       </td>
       <% if i.id_zd == 4 || i.id_zd == 8 || i.id_zd == 12 %>
         </tr>
-      <% end %>    
+      <% end %>
     <% end %>
   </table>
 </div>
